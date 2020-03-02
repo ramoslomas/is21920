@@ -1,14 +1,13 @@
 
-public class CentralitaNotificada {
-	public void off () {
-		
+public class CentralitaNotificada extends AlarmaHogarState{
+	
+	public void off (AlarmaHogar context) {
+		context.setState(getEstadoApagada());
+		context.getState().entryAction(context);
 	}
 	
-	public void notificarCentralita() {
-		
-	}
 	
-	public void entryAction() {
-		
+	public void entryAction(AlarmaHogar context) {
+		context.notificarCentralita();
 	}
 }
