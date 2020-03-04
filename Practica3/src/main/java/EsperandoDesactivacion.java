@@ -13,14 +13,14 @@ public class EsperandoDesactivacion extends AlarmaHogarState{
 	}
 	public void alarmaOff(AlarmaHogar context, String codigo) {
 		
-		System.out.println("PASO2");
+
 		int intentos=context.getIntentos();
 		
 		if(codigo.equals(context.getCodigoDesactivacion()) && intentos<context.getMaxintentos()){
 			context.setState(getEstadoApagada());
 			context.getState().entryAction(context);
 		}else {
-			System.out.println("codigo erroneo");
+
 			intentos=intentos+1;
 			context.setIntentos(intentos);
 		}

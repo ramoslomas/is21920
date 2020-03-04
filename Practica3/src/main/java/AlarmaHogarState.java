@@ -13,7 +13,6 @@ public abstract class AlarmaHogarState {
 		return estadoApagada;
 	}
 	public void alarmaOff(String codigo, AlarmaHogar context) {
-		System.out.println("PASO_M");
 	}
 	
 	public void alarmaOn(AlarmaHogar context) {

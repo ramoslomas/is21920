@@ -36,7 +36,6 @@ public class AlarmaHogar {
 	}
 	
 	public void alarmaOff(String codigo) {
-		System.out.println("estoy aqui");
 		state.alarmaOff(codigo, this);
 	}
 	

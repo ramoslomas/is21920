@@ -41,7 +41,6 @@ public class Interfaz2{
 		btnIntruso.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("Boton pulsado");
 				alarm.intruso();
 			}
 		});

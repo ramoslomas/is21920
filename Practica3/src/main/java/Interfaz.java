@@ -62,7 +62,7 @@ public class Interfaz {
 		estadoLed =new JTextField("");
 		estadoLed.setEditable(false);
 		estadoLed.setColumns(10);
-		estadoLed.setBounds(47,311,166,30);
+		estadoLed.setBounds(76,263,166,30);
 		frame.getContentPane().add(estadoLed);
 		
 		lblNewLabel =new JLabel("");
@@ -196,7 +196,7 @@ public class Interfaz {
 			public void mousePressed(MouseEvent e) {
 				
 				alarm.alarmaOn();
-				System.out.println("se pulsa el boton");
+
 			}
 		});
 		
@@ -207,9 +207,9 @@ public class Interfaz {
 		btnAlarmaoff.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				System.out.println("se pulsa el boton");
+
 				alarm.alarmaOff(cuadroNumeros.getText());
-				System.out.println("PASO");
+
 				cuadroNumeros.setText("");
 			}
 		});
@@ -223,18 +223,18 @@ public class Interfaz {
 		public void run() {
 			switch(alarm.getPiloto().getState()) {
 				case 0: 
-					System.out.println(alarm.getPiloto().getState());
+
 					estadoLed.setText("Apagado");
 					lblNewLabel.setBackground(Color.RED);
 					
 					break;
 				case 1:
-					System.out.println(alarm.getPiloto().getState());
+
 					estadoLed.setText("Encendido");
 					lblNewLabel.setBackground(Color.GREEN);
 					break;
 				case 2:
-					System.out.println(alarm.getPiloto().getState());
+
 					estadoLed.setText("Parpadeando");
 					if(lblNewLabel.getBackground()==Color.LIGHT_GRAY) {
 						lblNewLabel.setBackground(Color.RED);
