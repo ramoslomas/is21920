@@ -22,9 +22,10 @@ public class AlarmaHogar {
 		return maxintentos;
 	}
 	public AlarmaHogar() {
+		piloto=new Piloto();
 		state=AlarmaHogarState.init(this);
-		intervaloSalida=15000;
-		intervalosDesactivacion=20000;
+		intervaloSalida=5000;
+		intervalosDesactivacion=10000;
 		codigoDesactivacion="9999";
 	}
 	public void setState(AlarmaHogarState value) {
@@ -34,28 +35,29 @@ public class AlarmaHogar {
 		state.notificarCentralita(this);
 	}
 	
-	public void alarmaOff(String codigo,AlarmaHogar context) {
-		
+	public void alarmaOff(String codigo) {
+		System.out.println("estoy aqui");
+		state.alarmaOff(codigo, this);
 	}
 	
-	public void alarmaOn(AlarmaHogar context) {
-		
+	public void alarmaOn() {
+		state.alarmaOn(this);
 	}
 	
-	public void intruso(AlarmaHogar context) {
-		
+	public void intruso() {
+		state.intruso(this);
 	}
 	
-	public void off(AlarmaHogar context) {
-		
+	public void off() {
+		state.off(this);
 	}
 	
-	public void activarSensores(AlarmaHogar context) {
-		
+	public void activarSensores() {
+		state.activarSensores(this);
 	}
 	
-	public void desactivarSensores(AlarmaHogar context) {
-		
+	public void desactivarSensores() {
+		state.desactivarSensores(this);
 	}
 	
 	public AlarmaHogarState getState() {

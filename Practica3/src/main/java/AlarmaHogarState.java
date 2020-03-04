@@ -1,11 +1,11 @@
 
 public abstract class AlarmaHogarState {
 	
-	private static AlarmaHogarState estadoActivada = new Activada();
-	private static AlarmaHogarState estadoEsperandoSalida = new EsperandoSalida();
-	private static AlarmaHogarState estadoApagada = new Apagada();
-	private static AlarmaHogarState estadoEsperandoDesactivacion = new EsperandoDesactivacion();
-	private static AlarmaHogarState estadoCentralitaNotificada = new CentralitaNotificada();
+	protected static Activada estadoActivada = new Activada();
+	protected static EsperandoSalida estadoEsperandoSalida = new EsperandoSalida();
+	protected static Apagada estadoApagada = new Apagada();
+	protected static EsperandoDesactivacion estadoEsperandoDesactivacion = new EsperandoDesactivacion();
+	protected static CentralitaNotificada estadoCentralitaNotificada = new CentralitaNotificada();
 	
 	
 	public static AlarmaHogarState init(AlarmaHogar context) {
@@ -13,7 +13,7 @@ public abstract class AlarmaHogarState {
 		return estadoApagada;
 	}
 	public void alarmaOff(String codigo, AlarmaHogar context) {
-		
+		System.out.println("PASO_M");
 	}
 	
 	public void alarmaOn(AlarmaHogar context) {

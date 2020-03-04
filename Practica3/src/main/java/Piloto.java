@@ -1,6 +1,6 @@
 
 public class Piloto {
-	private int estado;
+	private int estado=0;
 	//0=apagado,1=encendido,2=intermitente
 	public void encender() {
 		estado=1;
