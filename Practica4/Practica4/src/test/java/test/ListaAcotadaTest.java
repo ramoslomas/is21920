@@ -68,6 +68,16 @@ public class ListaAcotadaTest {
 		}catch(IndexOutOfBoundsException e) {
 			
 		}
+		
+		try {
+			ListaOrdenadaAcotada<Integer> lista = new ListaOrdenadaAcotada<Integer>();
+			lista.clear();
+			lista.add(1);
+			assertTrue(lista.get(0)==1);
+			
+		}catch(IllegalStateException e) {
+			
+		}
 	
 		//casos no validos
 		//hacer get de un elemento que esta fuera del tamano de la lista
@@ -85,13 +95,13 @@ public class ListaAcotadaTest {
 		
 		try {
 			ListaOrdenadaAcotada<Integer> lista = new ListaOrdenadaAcotada<Integer>();
-			lista.clear();
-			lista.add(1);
-			fail("Deberia fallar");
 			
-		}catch(IllegalStateException e) {
+			lista.get(10);
+			fail("Deberia fallar");
+		}catch(IndexOutOfBoundsException e) {
 			
 		}
+		
 	}
 	
 
@@ -99,6 +109,16 @@ public class ListaAcotadaTest {
 	@Test
 	public void testRemove() {
 		//casos validos
+		
+		try {
+			ListaOrdenadaAcotada<Integer> lista = new ListaOrdenadaAcotada<Integer>();
+			
+			lista.add(1);
+			lista.remove(0);
+	
+		}catch(IndexOutOfBoundsException e) {
+			
+		}
 		try {
 			ListaOrdenadaAcotada<Integer> lista = new ListaOrdenadaAcotada<Integer>();
 			
