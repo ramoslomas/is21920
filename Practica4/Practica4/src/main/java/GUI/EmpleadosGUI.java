@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import modelo.Empleado;
+import modelo.Empleado.Categoria;
+import modelo.Empleado.DatoIncorrectoException;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -77,13 +79,18 @@ public class EmpleadosGUI extends JFrame {
 		btnCalcular.setName("btnCalcular");
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 			    LocalDate fechaUltimaVisita = LocalDate.parse(txtFechaContratacion.getText(), formatter);
 			    boolean baja = btnBaja.isSelected();
 			    Categoria categoria = Categoria.valueOf(comboCategoria.getSelectedItem().toString());
-			    Empleado emp = new Empleado("Pepe", fechaUltimaVisita, categoria);
+			    Empleado emp = new Empleado("Pepe", fechaUltimaVisita, baja, categoria);
 			    if (baja)
-			    	emp.darDeBaja();
+					try {
+						emp.darDeBaja();
+					} catch (DatoIncorrectoException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 			    double sueldo = 0;
 				try {			
 					sueldo = emp.sueldoBruto();
@@ -99,7 +106,7 @@ public class EmpleadosGUI extends JFrame {
 		
 		btnBaja = new JRadioButton("Baja");
 		btnBaja.setBounds(249, 26, 109, 23);
-		btnBaja.setName("btnVIP");
+		btnBaja.setName("btnBaja");
 		contentPane.add(btnBaja);
 		
 		comboCategoria = new JComboBox();
