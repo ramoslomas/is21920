@@ -115,7 +115,8 @@ public class ListaAcotadaTest {
 			
 			lista.add(1);
 			lista.remove(0);
-	
+			assertTrue(lista.size()==0);
+			
 		}catch(IndexOutOfBoundsException e) {
 			
 		}
