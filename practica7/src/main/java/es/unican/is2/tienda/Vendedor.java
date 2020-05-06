@@ -5,7 +5,7 @@ package es.unican.is2.tienda;
  * Vendedor de la tienda, con sus datos personales 
  * y datos de ventas y comisiones
  */
-public abstract class Vendedor {//WMC 10 CCog 2
+public abstract class Vendedor {//WMC 8 CCog 3
 	
 	private String id;
 	private String nombre;
@@ -63,11 +63,11 @@ public abstract class Vendedor {//WMC 10 CCog 2
 	
 	
 	@Override
-	public boolean equals(Object obj) {//+4 +2
+	public boolean equals(Object obj) {//+2 +3
 		if (!(obj instanceof Vendedor)) //+1 +1
 			return false;
 		Vendedor v = (Vendedor) obj;
-		return (v.id.equals(id) && v.nombre.equals(nombre));//+2 +1
+		return (v.id.equals(id) && v.nombre.equals(nombre));//+0 +2
 	}
 	
 	

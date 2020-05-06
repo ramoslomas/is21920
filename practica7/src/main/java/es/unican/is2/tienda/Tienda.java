@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -16,7 +18,7 @@ import java.util.Scanner;
  * vendedor. Los datos de la tienda se almacenan en un fichero de texto
  * que se pasa como par�metro al crear la tienda
  */
-public class Tienda {//WMC 29 CCog 19
+public class Tienda {//WMC 36 CCog 28
 
 	private LinkedList<Vendedor> lista = new LinkedList<Vendedor>();
 	private String direccion;
@@ -231,5 +233,35 @@ public class Tienda {//WMC 29 CCog 19
 		for (Vendedor v : lista) //+1
 			out.println("      Nombre: " + v.getNombre() + "   Id: " + v.getId() + "   TotalVentasMes: "
 					+ v.getTotalVentas());
+	}
+	
+	public List<Vendedor> sort() {//+4  +3
+		List<Vendedor> copia = lista;
+		Collections.sort(copia, new Comparator<Vendedor>() {
+			public int compare(Vendedor o1, Vendedor o2) {//+1 +0
+				if (o1.getTotalVentas()>o2.getTotalVentas())//+1 +1
+					return 1;
+				else if (o1.getTotalVentas()<o2.getTotalVentas())//+1 +2
+					return -1;
+				return 0;
+			}			
+		});
+		return copia;
+	}
+	
+	public List<Vendedor> vendedorDelMes(){//+3 +6
+		double maxVentas = 0.0;
+		List<Vendedor> resultado = new LinkedList<Vendedor>();
+		for (Vendedor v : lista) {//+1 +1
+			if (v.getTotalVentas() > maxVentas) {//+1 +2
+				maxVentas = v.getTotalVentas();
+				resultado.clear();
+				resultado.add(v);
+			} 
+			else if (v.getTotalVentas() == maxVentas) {//+1 +3
+				resultado.add(v);
+			}
+		}
+		return resultado;
 	}
 }

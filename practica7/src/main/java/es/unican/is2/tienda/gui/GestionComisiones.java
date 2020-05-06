@@ -18,12 +18,12 @@ import fundamentos.Mensaje;
  * @author MP
  * @version feb-13
  */
-public class GestionComisiones{ //WMC 11 CCog 30
+public class GestionComisiones{ //WMC 8 CCog 15
 
 	/**
 	 * Programa principal basado en menu
 	 */
-	public static void main(String[] args) {//+11  +27
+	public static void main(String[] args) {//+7  +15
 		// opciones del menu
 		final int NUEVA_VENTA = 0, VENDEDOR_DEL_MES = 1, VENDEDORES = 2;
 
@@ -70,17 +70,7 @@ public class GestionComisiones{ //WMC 11 CCog 30
 			case VENDEDOR_DEL_MES://+1
 
 				vendedores = tienda.vendedores();
-				resultado = new LinkedList<Vendedor>();
-				double maxVentas = 0.0;
-				for (Vendedor v : vendedores) {//+1 +3
-					if (v.getTotalVentas() > maxVentas) {//+1 +4
-						maxVentas = v.getTotalVentas();
-						resultado.clear();
-						resultado.add(v);
-					} else if (v.getTotalVentas() == maxVentas) {//+1 +5
-						resultado.add(v);
-					}
-				}
+				resultado = tienda.vendedorDelMes();
 				
 				msj = "";
 				for (Vendedor vn : resultado) {//+1 +3
@@ -93,7 +83,7 @@ public class GestionComisiones{ //WMC 11 CCog 30
 
 				vendedores = tienda.vendedores();
 				System.out.println(vendedores.size());
-				sort(vendedores);
+				tienda.sort();
 				
 				msj = "";
 				for (Vendedor vn : vendedores) {//+1 +3
@@ -117,17 +107,4 @@ public class GestionComisiones{ //WMC 11 CCog 30
 		Mensaje msj = new Mensaje(titulo);
 		msj.escribe(txt);
 	}
-	
-	private static void sort(List<Vendedor> vendedores) {//+4  +3
-		Collections.sort(vendedores, new Comparator<Vendedor>() {
-			public int compare(Vendedor o1, Vendedor o2) {//+1 +0
-				if (o1.getTotalVentas()>o2.getTotalVentas())//+1 +1
-					return 1;
-				else if (o1.getTotalVentas()<o2.getTotalVentas())//+1 +2
-					return -1;
-				return 0;
-			}			
-		});
-	}
-
 }
